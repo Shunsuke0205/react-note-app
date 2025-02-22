@@ -11,5 +11,6 @@ and select `React` and `JavaScript`.
 $ npm install
 ```
 ```bash
+$ npm i -D react-uuid
 $ npm install react-markdown
 ```
