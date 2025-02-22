@@ -12,12 +12,20 @@ function App() {
   useEffect(() => {
     // save notes to local storage
     localStorage.setItem("notes in storage", JSON.stringify(notes));
-  }, [notes]);
+  }, [notes]); // this will run every time notes changes
+
+  useEffect(() => {
+    if (notes.length === 0) {
+      return;
+    } else {
+      setActiveNoteId(notes[0]?.id);
+    }
+  }, []); // empty array means it will only run once when the component mounts
 
   const onAddNote = () => {
     console.log('add node');
     const newNote = {
-      id: uuid(),
+      id: uuid(), // generate a unique id
       title: "title of the note",
       content: "content of the note",
       modifiedDate: Date.now(),
