@@ -3,8 +3,7 @@ import "./Sidebar.css";
 
 const Sidebar = ({ onAddNote, notes, onDeleteNote, activeNoteId, setActiveNoteId }) => {
 
-  // const sortedNotes = notes.toSorted((a, b) => b.modifiedDate - a.modifiedDate);
-  notes.sort((a, b) => b.modifiedDate - a.modifiedDate);
+  const sortedNotes = notes.toSorted((a, b) => b.modifiedDate - a.modifiedDate);
 
   return (
     <div className="app-sidebar">
