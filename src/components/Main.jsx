@@ -1,7 +1,12 @@
 import React from "react";
 import "./Main.css";
 
-const Main = () => {
+const Main = ({ activeNote }) => {
+  if (!activeNote) {
+    return <div className="no-active-note">
+      note is not selected.
+    </div>
+  }
   return (
     <div className="app-main">
       <div className="app-main-note-edit">
@@ -11,8 +16,8 @@ const Main = () => {
       </div>
 
       <div className="app-main-note-preview">
-        <h1 className="preview-title">the title</h1>
-        <div className="markdown-preview">the content in Markdown</div>
+        <h1 className="preview-title">{activeNote.title}</h1>
+        <div className="markdown-preview">{activeNote.content}</div>
       </div>
 
     </div>
