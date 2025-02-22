@@ -24,12 +24,27 @@ function App() {
   const onDeleteNote = (deletingId) => {
     const filteredNotes = notes.filter((note) => note.id !== deletingId); // filter() leaves the elements that pass the condition, note.id is not equal to deletingId.
     setNotes(filteredNotes);
-  }
+  };
 
   const getActiveNote = () => {
     const activeNote = notes.find((note) => note.id === activeNoteId);
     return activeNote;
-  }
+  };
+
+  const onUpdateNote = (updatedNote) => {
+    // update
+    const updatedNotesArray = notes.map((note) => {
+      if (note.id === updatedNote.id) {
+        console.log('updated note', updatedNote);
+        return updatedNote;
+      } else {
+        return note;
+      }
+    });
+
+    setNotes(updatedNotesArray);
+    console.log('updated notes array', updatedNotesArray);
+  };
 
   return (
     <div className="App">
@@ -42,6 +57,7 @@ function App() {
       />
       <Main
         activeNote={getActiveNote()}
+        onUpdateNote={onUpdateNote}
       />
     </div>
   );
